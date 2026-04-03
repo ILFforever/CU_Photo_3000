@@ -1,11 +1,5 @@
 import { useState } from 'react'
 import './Groups.css'
-import PARTICIPANTS from '../data/participants.js'
-
-const nickToPin = {}
-PARTICIPANTS.forEach(p => {
-  nickToPin[p.nickname] = p.pin
-})
 
 const groups = [
   {
@@ -145,34 +139,6 @@ function Highlight({ text, q }) {
   )
 }
 
-function PinButton({ nick }) {
-  const [revealed, setRevealed] = useState(false)
-  const [copied, setCopied] = useState(false)
-  const pin = nickToPin[nick]
-
-  const handleClick = () => {
-    if (revealed && !copied) {
-      navigator.clipboard.writeText(pin)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    } else {
-      setRevealed(!revealed)
-      setCopied(false)
-    }
-  }
-
-  return (
-    <button
-      className={`pin-btn ${revealed ? 'revealed' : ''} ${copied ? 'copied' : ''}`}
-      onClick={handleClick}
-      type="button"
-      title={revealed ? copied ? 'คัดลอกแล้ว' : 'คลิกเพื่อคัดลอก' : 'คลิกเพื่อดู PIN'}
-    >
-      {revealed ? (copied ? '✓' : pin) : '🔐'}
-    </button>
-  )
-}
-
 export default function Groups() {
   const [expanded, setExpanded] = useState(null)
   const [query, setQuery] = useState('')
@@ -278,7 +244,6 @@ export default function Groups() {
                                 <Highlight text={m.name} q={q} />
                               </span>
                             </div>
-                            <PinButton nick={m.nick} />
                           </li>
                         ))}
                       </ul>

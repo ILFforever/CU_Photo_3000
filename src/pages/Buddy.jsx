@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './Buddy.css'
 import PARTICIPANTS from '../data/participants.js'
+import STAFF from '../data/staff.js'
 import BUDDY_MATCHINGS from '../data/buddyMatchings.js'
 
 export default function Buddy() {
@@ -25,7 +26,7 @@ export default function Buddy() {
     
     if (!nick || !pinInput) return
     
-    const me = PARTICIPANTS.find(p => p.nickname === nick)
+    const me = PARTICIPANTS.find(p => p.nickname === nick) || STAFF.find(s => s.nickname === nick)
     
     if (me) {
       if (me.pin === pinInput) {
@@ -125,7 +126,9 @@ export default function Buddy() {
               <span className="card-role" lang="th">คุณ</span>
               <div className="card-avatar">{result.me.nickname.charAt(0)}</div>
               <span className="card-nick" lang="th">{result.me.nickname}</span>
-              <span className="card-group" lang="th">กลุ่มที่ {result.me.group}</span>
+              <span className="card-group" lang="th">
+                {result.me.group ? `กลุ่มที่ ${result.me.group}` : result.me.uni}
+              </span>
             </div>
 
             <div className="result-connector" aria-hidden="true">
@@ -149,7 +152,9 @@ export default function Buddy() {
                 {buddyRevealed ? result.buddy?.nickname : 'คลิกเพื่อเปิดเผย'}
               </span>
               <span className="card-group" lang="th">
-                กลุ่มที่ {result.buddy?.group ?? '?'}
+                {buddyRevealed ? (
+                  result.buddy?.group ? `กลุ่มที่ ${result.buddy.group}` : result.buddy?.uni
+                ) : '?'}
               </span>
             </div>
           </div>

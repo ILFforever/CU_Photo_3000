@@ -1,6 +1,7 @@
 import PARTICIPANTS from './participants.js'
+import STAFF from './staff.js'
 
-// Pre-shuffled participant list with fixed matchings
+// Pre-shuffled combined list with fixed matchings
 // Using a seeded shuffle to ensure everyone gets one unique buddy
 function seededShuffle(array, seed) {
   let m = array.length
@@ -23,15 +24,18 @@ function random(seed) {
   return x - Math.floor(x)
 }
 
-// Shuffle participants with a fixed seed
-const SHUFFLED_PARTICIPANTS = seededShuffle([...PARTICIPANTS], 12345)
+// Combine participants and staff
+const ALL_PEOPLE = [...PARTICIPANTS, ...STAFF]
+
+// Shuffle combined list with a fixed seed
+const SHUFFLED_PEOPLE = seededShuffle([...ALL_PEOPLE], 12345)
 
 // Create circular buddy matchings (each person's buddy is the next person)
 const BUDDY_MATCHINGS = {}
 
-for (let i = 0; i < SHUFFLED_PARTICIPANTS.length; i++) {
-  const currentPerson = SHUFFLED_PARTICIPANTS[i]
-  const nextPerson = SHUFFLED_PARTICIPANTS[(i + 1) % SHUFFLED_PARTICIPANTS.length]
+for (let i = 0; i < SHUFFLED_PEOPLE.length; i++) {
+  const currentPerson = SHUFFLED_PEOPLE[i]
+  const nextPerson = SHUFFLED_PEOPLE[(i + 1) % SHUFFLED_PEOPLE.length]
   
   BUDDY_MATCHINGS[currentPerson.nickname] = nextPerson
 }
@@ -40,4 +44,4 @@ for (let i = 0; i < SHUFFLED_PARTICIPANTS.length; i++) {
 export default BUDDY_MATCHINGS
 
 // Also export the shuffled list for reference
-export { SHUFFLED_PARTICIPANTS }
+export { SHUFFLED_PEOPLE }
