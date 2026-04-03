@@ -1,0 +1,243 @@
+/* ── University color tokens (local) ── */
+.sc--mu { --uc: var(--mu); --uc-bg: oklch(44% 0.15 265 / 0.08); }
+.sc--cu { --uc: var(--cu); --uc-bg: oklch(52% 0.19 12 / 0.08); }
+.sc--tu { --uc: var(--tu); --uc-bg: oklch(58% 0.21 30 / 0.08); }
+
+/* ── Page ── */
+.staff-page {
+  min-height: 100vh;
+  background: oklch(16% 0.03 215);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+.staff-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  padding: var(--sp-12) var(--sp-12) var(--sp-8);
+  border-bottom: 1px solid var(--teal-border);
+}
+
+.staff-title {
+  font-family: var(--font-thai);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  letter-spacing: 0;
+  line-height: 1.4;
+  margin-bottom: var(--sp-1);
+}
+
+.staff-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ── Sort toggle ── */
+.st-sort-group {
+  display: flex;
+  border: 1px solid var(--teal-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.st-sort-btn {
+  font-family: var(--font-thai);
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: background 150ms, color 150ms;
+}
+
+.st-sort-btn + .st-sort-btn {
+  border-left: 1px solid var(--teal-border);
+}
+
+.st-sort-btn:hover {
+  background: oklch(22% 0.025 210);
+  color: var(--text-body);
+}
+
+.st-sort-btn.active {
+  background: oklch(66% 0.09 185 / 0.12);
+  color: var(--teal);
+}
+
+/* ── Body ── */
+.staff-body {
+  padding: var(--sp-8) var(--sp-12) var(--sp-16);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+/* ── Section ── */
+.st-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: var(--sp-4);
+}
+
+.st-section-label {
+  font-family: var(--font-thai);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--text-heading);
+}
+
+.st-section-sub {
+  font-family: var(--font-thai);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+.st-section-count {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  background: oklch(22% 0.025 210);
+  border: 1px solid oklch(30% 0.025 210);
+  padding: 1px 7px;
+  border-radius: 999px;
+  margin-left: auto;
+}
+
+/* ── Grid ── */
+.st-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+/* ── Staff card ── */
+.sc {
+  background: oklch(20% 0.025 210);
+  border: 1px solid oklch(30% 0.025 210);
+  border-left: 4px solid var(--uc, var(--teal));
+  border-radius: 8px;
+  padding: 14px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: border-color 150ms, background 150ms;
+}
+
+.sc:hover {
+  background: oklch(22% 0.025 210);
+  border-color: oklch(36% 0.03 210);
+  border-left-color: var(--uc, var(--teal));
+}
+
+.sc-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.sc-nick {
+  font-family: var(--font-thai);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.3;
+  color: var(--text-heading);
+}
+
+.sc-badges {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.sc-uni {
+  font-family: var(--font-body);
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+
+.sc-uni.mu { color: oklch(62% 0.15 265); background: oklch(44% 0.15 265 / 0.15); }
+.sc-uni.cu { color: var(--cu);            background: oklch(52% 0.19 12 / 0.15); }
+.sc-uni.tu { color: var(--tu);            background: oklch(58% 0.21 30 / 0.15); }
+
+.sc-nurse-badge {
+  font-family: var(--font-thai);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+  color: oklch(72% 0.18 152);
+  background: oklch(68% 0.18 152 / 0.12);
+  border: 1px solid oklch(68% 0.18 152 / 0.3);
+  padding: 1px 6px;
+  border-radius: 999px;
+}
+
+.sc-name {
+  font-family: var(--font-thai);
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.sc-phone {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--teal);
+  text-decoration: none;
+  margin-top: 2px;
+}
+
+.sc-phone:hover {
+  text-decoration: underline;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .staff-header {
+    padding: var(--sp-8) var(--sp-4) var(--sp-6);
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .staff-body {
+    padding: var(--sp-6) var(--sp-4) var(--sp-12);
+  }
+
+  .st-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .st-grid {
+    grid-template-columns: 1fr;
+  }
+}

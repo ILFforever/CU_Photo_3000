@@ -1,0 +1,269 @@
+.schedule-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+.schedule-header {
+  padding: var(--sp-12) var(--sp-12) 0;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 10;
+  border-bottom: 1px solid var(--teal-border);
+}
+
+.schedule-title {
+  font-family: var(--font-thai);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: var(--sp-6);
+}
+
+/* Day tabs */
+.day-tabs {
+  display: flex;
+  gap: 2px;
+}
+
+.day-tab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: var(--sp-3) var(--sp-6) var(--sp-4);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color 200ms, border-color 200ms;
+  margin-bottom: -1px;
+}
+
+.day-tab:hover {
+  color: var(--text-body);
+}
+
+.day-tab.active {
+  color: var(--text-heading);
+  border-bottom-color: var(--teal);
+}
+
+.tab-label {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.tab-date {
+  font-family: var(--font-thai);
+  font-size: 0.72rem;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+/* Live dot on tab */
+.live-dot {
+  position: absolute;
+  top: var(--sp-3);
+  right: var(--sp-3);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.7); }
+}
+
+/* ── Body ── */
+.schedule-body {
+  padding: var(--sp-8) var(--sp-12) var(--sp-16);
+  flex: 1;
+}
+
+.day-date-full {
+  font-family: var(--font-thai);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: var(--sp-8);
+}
+
+/* ── Activity list ── */
+.activity-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.activity-item {
+  display: grid;
+  grid-template-columns: 72px 24px 1fr;
+  gap: 0 var(--sp-4);
+  min-height: 56px;
+}
+
+/* Time column */
+.act-time-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 3px;
+  gap: 2px;
+}
+
+.act-start {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-body);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.act-end {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Timeline line */
+.act-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+}
+
+.act-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--surface-3);
+  border: 1.5px solid var(--teal-border);
+  flex-shrink: 0;
+  transition: background 200ms, border-color 200ms;
+}
+
+.act-connector {
+  width: 1px;
+  flex: 1;
+  background: var(--teal-border);
+  margin: 3px 0;
+  min-height: 24px;
+}
+
+/* Activity content */
+.act-content {
+  padding: 0 0 var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.act-th {
+  font-family: var(--font-thai);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+.act-en {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ── Past activities ── */
+.activity-item.past .act-dot {
+  background: var(--surface-2);
+  border-color: oklch(35% 0.02 200);
+}
+
+.activity-item.past .act-start,
+.activity-item.past .act-th {
+  opacity: 0.4;
+}
+
+.activity-item.past .act-end,
+.activity-item.past .act-en {
+  opacity: 0.3;
+}
+
+/* ── Live activity ── */
+.activity-item.live .act-dot {
+  background: var(--teal);
+  border-color: var(--teal);
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 0 0 3px oklch(66% 0.09 185 / 0.2);
+}
+
+.activity-item.live .act-th {
+  color: var(--text-heading);
+  font-weight: 700;
+}
+
+.activity-item.live .act-start {
+  color: var(--teal);
+}
+
+/* Live badge */
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-thai);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--sp-1);
+}
+
+.live-pulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: pulse-dot 1.4s ease-in-out infinite;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .schedule-header {
+    padding: var(--sp-8) var(--sp-4) 0;
+  }
+
+  .schedule-body {
+    padding: var(--sp-6) var(--sp-4) var(--sp-12);
+  }
+
+  .day-tab {
+    padding: var(--sp-3) var(--sp-4) var(--sp-4);
+  }
+
+  .activity-item {
+    grid-template-columns: 60px 20px 1fr;
+    gap: 0 var(--sp-3);
+  }
+
+  .act-start {
+    font-size: 0.72rem;
+  }
+}

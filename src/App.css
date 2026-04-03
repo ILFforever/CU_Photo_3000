@@ -1,0 +1,31 @@
+/* ── Root layout: sidebar + content ── */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  background: var(--bg);
+  transition: margin-left 250ms var(--ease-out-quart);
+}
+
+/* Shrink content area when sidebar is collapsed */
+.layout:has(.sidebar-collapsed) .main-content {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+/* On mobile the topbar is shown and sidebar is a drawer */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding-top: 52px;
+  }
+
+  /* Override collapsed shift — not applicable on mobile */
+  .layout:has(.sidebar-collapsed) .main-content {
+    margin-left: 0;
+  }
+}

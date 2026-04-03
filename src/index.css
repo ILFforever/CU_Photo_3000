@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Noto+Sans+Thai:wght@300;400;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
+/* ─────────────────────────────────────
+   Design Tokens
+───────────────────────────────────── */
+:root {
+  /* Backgrounds — deep forest night, blue-green tinted */
+  --bg:        oklch(11% 0.03 215);
+  --surface-1: oklch(15% 0.028 210);
+  --surface-2: oklch(19% 0.025 200);
+  --surface-3: oklch(23% 0.022 195);
+
+  /* Accent — muted waterfall teal (not neon) */
+  --teal:        oklch(66% 0.09 185);
+  --teal-dim:    oklch(40% 0.07 185);
+  --teal-border: oklch(66% 0.09 185 / 0.15);
+
+  /* Forest green */
+  --forest: oklch(52% 0.13 155);
+
+  /* Text */
+  --text-heading: oklch(95% 0.012 190);
+  --text-body:    oklch(75% 0.03 190);
+  --text-muted:   oklch(50% 0.025 200);
+
+  /* University brand colors */
+  --cu: oklch(52% 0.19 12);   /* Chulalongkorn — crimson */
+  --tu: oklch(58% 0.21 30);   /* Thammasat — red */
+  --mu: oklch(44% 0.15 265);  /* Mahidol — navy */
+
+  /* Spacing — 4pt base */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-24: 96px;
+
+  /* Easing */
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Fonts */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-thai:    'Noto Sans Thai', system-ui, sans-serif;
+  --font-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* ─────────────────────────────────────
+   Reset & Base
+───────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark;
+  scrollbar-width: none; /* Firefox */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome / Edge / Safari */
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}

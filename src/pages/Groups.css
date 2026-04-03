@@ -1,0 +1,515 @@
+/* ── Per-group color tokens ── */
+.gc-1 { --gc: oklch(68% 0.16 195); --gc-bg: oklch(68% 0.16 195 / 0.07); }
+.gc-2 { --gc: oklch(65% 0.23 5);   --gc-bg: oklch(65% 0.23 5 / 0.07); }
+.gc-3 { --gc: oklch(76% 0.18 75);  --gc-bg: oklch(76% 0.18 75 / 0.07); }
+.gc-4 { --gc: oklch(65% 0.20 290); --gc-bg: oklch(65% 0.20 290 / 0.07); }
+.gc-5 { --gc: oklch(68% 0.19 152); --gc-bg: oklch(68% 0.19 152 / 0.07); }
+.gc-6 { --gc: oklch(70% 0.21 50);  --gc-bg: oklch(70% 0.21 50 / 0.07); }
+
+/* ── Page shell ── */
+.groups-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: oklch(16% 0.03 215);
+}
+
+/* ── Header ── */
+.groups-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  padding: var(--sp-12) var(--sp-12) var(--sp-8);
+  border-bottom: 1px solid var(--teal-border);
+}
+
+.groups-title {
+  font-family: var(--font-thai);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  /* Thai text must have NO letter-spacing — it displaces tone marks */
+  letter-spacing: 0;
+  line-height: 1.4;
+  margin-bottom: var(--sp-1);
+}
+
+.groups-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ── Search ── */
+.groups-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  width: 15px;
+  height: 15px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.groups-search {
+  font-family: var(--font-thai);
+  font-size: 0.82rem;
+  /* Thai: no letter-spacing */
+  letter-spacing: 0;
+  line-height: 1.5;
+  color: var(--text-body);
+  background: oklch(20% 0.025 210);
+  border: 1px solid var(--teal-border);
+  border-radius: 999px;
+  padding: 7px 32px 7px 32px;
+  width: 220px;
+  outline: none;
+  transition: border-color 200ms, background 200ms;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.groups-search::placeholder {
+  color: var(--text-muted);
+}
+
+.groups-search:focus {
+  border-color: var(--teal);
+  background: oklch(22% 0.03 210);
+}
+
+.search-clear {
+  position: absolute;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  transition: color 150ms;
+}
+
+.search-clear:hover { color: var(--text-body); }
+
+/* ── Body ── */
+.groups-body {
+  padding: var(--sp-8) var(--sp-12) var(--sp-16);
+  flex: 1;
+}
+
+.groups-empty {
+  font-family: var(--font-thai);
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  line-height: 1.5;
+  color: var(--text-muted);
+  text-align: center;
+  padding: var(--sp-16) 0;
+}
+
+/* ── Card grid: 2 columns on desktop ── */
+.group-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* ── Individual card ── */
+.group-card {
+  background: oklch(20% 0.025 210);
+  /* Accent lives here — thicker coloured left edge, thin border elsewhere */
+  border: 1px solid oklch(30% 0.025 210);
+  border-left: 4px solid var(--gc, var(--teal));
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 200ms, border-left-color 200ms;
+}
+
+.group-card:hover {
+  border-color: oklch(38% 0.03 210);
+  border-left-color: var(--gc, var(--teal));
+}
+
+.group-card.open {
+  background: oklch(21% 0.028 210);
+  border-color: oklch(36% 0.03 210);
+  border-left-color: var(--gc, var(--teal));
+  border-left-width: 5px;
+  /* Span both columns — "4 card" footprint */
+  grid-column: 1 / -1;
+}
+
+/* ── Toggle button (visible card face) ── */
+.gc-toggle {
+  width: 100%;
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text-body);
+  padding: 0;
+  transition: background 150ms;
+}
+
+.gc-toggle:hover {
+  background: oklch(24% 0.025 210);
+}
+
+.group-card.open .gc-toggle {
+  border-bottom: 1px solid oklch(28% 0.025 210);
+}
+
+.gc-header-content {
+  padding: 14px 16px;
+  min-width: 0;
+}
+
+.gc-top-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-bottom: 6px;
+}
+
+.gc-num {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--gc, var(--teal));
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.gc-member-count {
+  font-family: var(--font-thai);
+  font-size: 0.7rem;
+  /* Thai: no letter-spacing */
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--text-muted);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.gc-chevron {
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 300ms var(--ease-out-quart);
+}
+
+.group-card.open .gc-chevron {
+  transform: rotate(180deg);
+}
+
+.gc-name {
+  font-family: var(--font-thai);
+  font-size: 1.05rem;
+  font-weight: 700;
+  /* Thai: no letter-spacing */
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--text-heading);
+  margin-bottom: 3px;
+}
+
+.gc-comp {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+/* Nick pills — visible at a glance without expanding */
+.gc-nick-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.gc-nick-pill {
+  font-family: var(--font-thai);
+  font-size: 0.72rem;
+  font-weight: 600;
+  /* Thai: no letter-spacing */
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--gc, var(--teal));
+  background: var(--gc-bg, oklch(66% 0.09 185 / 0.07));
+  border: 1px solid var(--gc, var(--teal-border));
+  border-opacity: 0.25;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* ── Search highlight ── */
+.hl {
+  background: oklch(76% 0.18 75 / 0.25);
+  color: oklch(90% 0.12 75);
+  border-radius: 2px;
+  padding: 0 1px;
+  font-style: normal;
+}
+
+/* ── Expandable body ── */
+.gc-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms var(--ease-out-quart);
+  overflow: hidden;
+}
+
+.group-card.open .gc-body {
+  grid-template-rows: 1fr;
+}
+
+.gc-body-inner {
+  overflow: hidden;
+}
+
+/* When expanded, show members + staff side by side */
+.group-card.open .gc-body-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.group-card.open .gc-section {
+  border-bottom: none;
+  border-right: 1px solid oklch(28% 0.025 210);
+}
+
+.group-card.open .gc-section--staff {
+  border-right: none;
+}
+
+/* ── Section (members / staff) ── */
+.gc-section {
+  padding: 14px 16px 14px 18px;
+  border-bottom: 1px solid oklch(28% 0.025 210);
+}
+
+.gc-section--staff {
+  border-bottom: none;
+}
+
+.gc-section-label {
+  font-family: var(--font-thai);
+  font-size: 0.62rem;
+  font-weight: 700;
+  /* Thai: no letter-spacing */
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--gc, var(--teal));
+  text-transform: none;
+  opacity: 0.85;
+  margin-bottom: 10px;
+}
+
+/* ── Member list ── */
+.gc-member-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gc-member-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 6px;
+  border-radius: 6px;
+  transition: background 150ms;
+}
+
+.gc-member-row:hover {
+  background: var(--gc-bg, oklch(66% 0.09 185 / 0.05));
+}
+
+.gc-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--gc-bg, oklch(66% 0.09 185 / 0.1));
+  border: 1px solid var(--gc, var(--teal-border));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-thai);
+  font-size: 0.8rem;
+  font-weight: 700;
+  /* Thai: no letter-spacing */
+  letter-spacing: 0;
+  line-height: 1;
+  color: var(--gc, var(--teal));
+  flex-shrink: 0;
+}
+
+.gc-member-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.gc-member-nick {
+  font-family: var(--font-thai);
+  font-size: 0.88rem;
+  font-weight: 600;
+  /* Thai: no letter-spacing */
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--text-heading);
+}
+
+.gc-member-name {
+  font-family: var(--font-thai);
+  font-size: 0.7rem;
+  font-weight: 300;
+  /* Thai: no letter-spacing */
+  letter-spacing: 0;
+  line-height: 1.5;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── PIN Button ── */
+.pin-btn {
+  margin-left: auto;
+  width: 36px;
+  height: 30px;
+  border: 1px solid var(--teal-border);
+  background: oklch(24% 0.025 210);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  transition: all 200ms;
+  flex-shrink: 0;
+}
+
+.pin-btn:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  background: oklch(26% 0.03 210);
+}
+
+.pin-btn.revealed {
+  color: var(--gc, var(--teal));
+  border-color: var(--gc, var(--teal));
+  background: var(--gc-bg, oklch(66% 0.09 185 / 0.1));
+}
+
+.pin-btn.copied {
+  color: oklch(75% 0.15 145);
+  border-color: oklch(75% 0.15 145);
+  background: oklch(75% 0.15 145 / 0.1);
+}
+
+/* ── Staff chips ── */
+.gc-staff-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.gc-staff-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 6px;
+  background: oklch(24% 0.025 210);
+  border: 1px solid oklch(32% 0.025 210);
+  border-radius: 999px;
+}
+
+.gc-staff-uni {
+  font-family: var(--font-body);
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 1px 5px;
+  border-radius: 999px;
+}
+
+.gc-staff-uni.cu { color: var(--cu); background: oklch(52% 0.19 12 / 0.15); }
+.gc-staff-uni.tu { color: var(--tu); background: oklch(58% 0.21 30 / 0.15); }
+.gc-staff-uni.mu { color: oklch(62% 0.15 265); background: oklch(44% 0.15 265 / 0.15); }
+
+.gc-staff-nick {
+  font-family: var(--font-thai);
+  font-size: 0.78rem;
+  font-weight: 400;
+  /* Thai: no letter-spacing */
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--text-body);
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .groups-header {
+    padding: var(--sp-8) var(--sp-4) var(--sp-6);
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .groups-search-wrap {
+    width: 100%;
+  }
+
+  .groups-search {
+    width: 100%;
+  }
+
+  .groups-body {
+    padding: var(--sp-6) var(--sp-4) var(--sp-12);
+  }
+
+  .group-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* On mobile the grid is already 1 column, so spanning does nothing extra */
+  .group-card.open .gc-body-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .group-card.open .gc-section {
+    border-right: none;
+    border-bottom: 1px solid oklch(28% 0.025 210);
+  }
+
+  .group-card.open .gc-section--staff {
+    border-bottom: none;
+  }
+}
