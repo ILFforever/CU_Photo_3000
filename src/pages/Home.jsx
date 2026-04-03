@@ -3,8 +3,8 @@ import './Home.css'
 
 const polaroids = [
   { src: '/images/hero/dam.JPG', alt: 'เขื่อนขุนด่าน', label: 'เขื่อนขุนด่าน' },
-  { src: '/images/hero/group.jpg', alt: 'กิจกรรมร่วม', label: 'กิจกรรมร่วม' },
-  { src: '/images/hero/tree.jpg', alt: 'ธรรมชาติ', label: 'ธรรมชาติ' },
+  { src: '/images/hero/group.jpg', alt: 'กิจกรรมร่วม', label: 'Group Photo' },
+  { src: '/images/hero/tree.jpg', alt: 'ธรรมชาติ', label: 'Kodak Film' },
 ]
 
 const destinations = [

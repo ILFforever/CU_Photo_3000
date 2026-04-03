@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './Groups.css'
+import STAFF from '../data/staff.js'
+import { UNI_META } from '../data/staff.js'
 
 const groups = [
   {
@@ -17,7 +19,8 @@ const groups = [
     ],
     staff: [
       { nick: 'ไม้',           uni: 'CU' },
-      { nick: 'มิกกี้/ไม้โปร', uni: 'CU' },
+      { nick: 'มิกกี้',       uni: 'CU' },
+      { nick: 'ไม้โปร',       uni: 'CU' },
       { nick: 'เคท',           uni: 'TU' },
       { nick: 'อุ้ม',          uni: 'MU' },
       { nick: 'เกี๊ยว',        uni: 'MU' },
@@ -59,7 +62,7 @@ const groups = [
       { nick: 'ปิง',       uni: 'CU' },
       { nick: 'น้อบ',      uni: 'CU' },
       { nick: 'ไมน์',      uni: 'TU' },
-      { nick: 'พี่คุกกี้', uni: 'MU' },
+      { nick: 'คุกกี้',   uni: 'MU' },
     ],
   },
   {
@@ -116,7 +119,7 @@ const groups = [
       { nick: 'เอิง',  uni: 'CU' },
       { nick: 'วีร์',  uni: 'CU' },
       { nick: 'ตัง',   uni: 'TU' },
-      { nick: 'เอินน', uni: 'MU' },
+      { nick: 'เอิร์น', uni: 'MU' },
       { nick: 'จีจี้', uni: 'MU' },
     ],
   },
@@ -139,9 +142,65 @@ function Highlight({ text, q }) {
   )
 }
 
+function StaffModal({ staff, onClose }) {
+  if (!staff) return null
+  const isNurse = staff.role === 'พยาบาล'
+  
+  return (
+    <div className="staff-modal-overlay" onClick={onClose}>
+      <div className="staff-modal" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose} aria-label="ปิด">×</button>
+        
+        <div className="modal-header">
+          <div className={`modal-avatar modal-avatar--${staff.uni.toLowerCase()}`}>
+            {staff.nickname.charAt(0)}
+          </div>
+          <h2 className="modal-name" lang="th">{staff.fullName}</h2>
+          <p className="modal-nick" lang="th">{staff.nickname}</p>
+          <div className="modal-badges">
+            {isNurse && <span className="sc-nurse-badge" lang="th">พยาบาล</span>}
+            <span className={`modal-uni ${staff.uni.toLowerCase()}`}>
+              {UNI_META[staff.uni].label} ({staff.uni})
+            </span>
+          </div>
+        </div>
+
+        <div className="modal-details">
+          <div className="modal-detail-item">
+            <span className="detail-label" lang="th">บทบาท</span>
+            <span className="detail-value" lang="th">{staff.role === '-' ? '-' : staff.role}</span>
+          </div>
+          
+          <div className="modal-detail-item">
+            <span className="detail-label" lang="th">เบอร์โทรศัพท์</span>
+            <a className="detail-value detail-link" href={`tel:${staff.phone}`}>
+              {staff.phone}
+            </a>
+          </div>
+
+          {staff.group && (
+            <div className="modal-detail-item">
+              <span className="detail-label" lang="th">กลุ่มที่ดูแล</span>
+              <span className="detail-value" lang="th">กลุ่มที่ {staff.group}</span>
+            </div>
+          )}
+
+          {!staff.group && (
+            <div className="modal-detail-item">
+              <span className="detail-label" lang="th">กลุ่มที่ดูแล</span>
+              <span className="detail-value" lang="th">ไม่ได้อยู่ในกลุ่ม</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Groups() {
   const [expanded, setExpanded] = useState(null)
   const [query, setQuery] = useState('')
+  const [selectedStaff, setSelectedStaff] = useState(null)
 
   const q = query.trim()
   const filtered = q
@@ -252,23 +311,34 @@ export default function Groups() {
                     <div className="gc-section gc-section--staff">
                       <p className="gc-section-label" lang="th">สตาฟ</p>
                       <div className="gc-staff-list">
-                        {g.staff.map((s, i) => (
-                          <div key={i} className="gc-staff-chip">
-                            <span className={`gc-staff-uni ${uniClass[s.uni]}`}>{s.uni}</span>
-                            <span className="gc-staff-nick" lang="th">
-                              <Highlight text={s.nick} q={q} />
-                            </span>
-                          </div>
-                        ))}
+                        {g.staff.map((s, i) => {
+                          const staffMember = STAFF.find(staff => staff.nickname === s.nick)
+                          return (
+                            <div 
+                              key={i} 
+                              className="gc-staff-chip clickable"
+                              onClick={() => staffMember && setSelectedStaff(staffMember)}
+                            >
+                              <span className={`gc-staff-uni ${uniClass[s.uni]}`}>{s.uni}</span>
+                              <span className="gc-staff-nick" lang="th">
+                                <Highlight text={s.nick} q={q} />
+                              </span>
+                            </div>
+                          )
+                        })}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             )
-          })}
+           })}
         </div>
       </div>
+
+      {selectedStaff && (
+        <StaffModal staff={selectedStaff} onClose={() => setSelectedStaff(null)} />
+      )}
     </div>
-  )
+   )
 }
