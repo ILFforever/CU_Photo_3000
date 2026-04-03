@@ -64,7 +64,7 @@ export default function Home() {
         <div className="mist-layer mist-c" />
       </div>
 
-      <section className="hero" aria-label="Photo3000 สัมพันธ์">
+      <section className="hero" aria-label="Photo สัมพันธ์">
         <div className="polaroid-stack" aria-hidden="true">
           {polaroids.map((p, i) => (
             <div key={i} className={`polaroid polaroid-${i}`}>
@@ -86,7 +86,7 @@ export default function Home() {
           </p>
 
           <h1 className="event-name">
-            <span className="name-en">Photo3000</span>
+            <span className="name-en">Photo</span>
             <span className="name-th" lang="th">สัมพันธ์</span>
           </h1>
 
@@ -146,7 +146,7 @@ export default function Home() {
       </section>
 
       <footer className="site-footer">
-        <span lang="th">Photo3000 สัมพันธ์</span>
+        <span lang="th">Photo สัมพันธ์</span>
         <span className="footer-dot" aria-hidden="true">·</span>
         <span>CU × TU × MU</span>
         <span className="footer-dot" aria-hidden="true">·</span>

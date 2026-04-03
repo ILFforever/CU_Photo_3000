@@ -219,6 +219,209 @@
   text-decoration: underline;
 }
 
+/* ── Modal Overlay ── */
+.staff-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: oklch(10% 0.02 215 / 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+  animation: modalFadeIn 200ms var(--ease-out-expo);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Modal ── */
+.staff-modal {
+  background: oklch(18% 0.025 210);
+  border: 1px solid oklch(28% 0.03 210);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 380px;
+  overflow: hidden;
+  animation: modalSlideUp 300ms var(--ease-out-expo);
+}
+
+@keyframes modalSlideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background: oklch(24% 0.025 210);
+  border: 1px solid oklch(32% 0.025 210);
+  border-radius: 50%;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 150ms, color 150ms, border-color 150ms;
+}
+
+.modal-close:hover {
+  background: oklch(26% 0.03 210);
+  color: var(--text-heading);
+  border-color: oklch(38% 0.03 210);
+}
+
+/* ── Modal Header ── */
+.modal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 24px 20px;
+  text-align: center;
+  border-bottom: 1px solid oklch(28% 0.025 210);
+}
+
+.modal-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-thai);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  border: 3px solid;
+  margin-bottom: 12px;
+}
+
+.modal-avatar--mu {
+  background: oklch(44% 0.15 265 / 0.12);
+  border-color: oklch(62% 0.15 265);
+  color: oklch(62% 0.15 265);
+}
+
+.modal-avatar--cu {
+  background: oklch(52% 0.19 12 / 0.12);
+  border-color: var(--cu);
+  color: var(--cu);
+}
+
+.modal-avatar--tu {
+  background: oklch(58% 0.21 30 / 0.12);
+  border-color: var(--tu);
+  color: var(--tu);
+}
+
+.modal-name {
+  font-family: var(--font-thai);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--text-heading);
+  margin-bottom: 2px;
+}
+
+.modal-nick {
+  font-family: var(--font-thai);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--teal);
+  margin-bottom: 10px;
+}
+
+.modal-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.modal-uni {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.modal-uni.mu {
+  color: oklch(62% 0.15 265);
+  background: oklch(44% 0.15 265 / 0.15);
+}
+
+.modal-uni.cu {
+  color: var(--cu);
+  background: oklch(52% 0.19 12 / 0.15);
+}
+
+.modal-uni.tu {
+  color: var(--tu);
+  background: oklch(58% 0.21 30 / 0.15);
+}
+
+/* ── Modal Details ── */
+.modal-details {
+  padding: 20px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-label {
+  font-family: var(--font-thai);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+.detail-value {
+  font-family: var(--font-thai);
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+
+.detail-link {
+  color: var(--teal);
+  text-decoration: none;
+  transition: text-decoration 150ms;
+}
+
+.detail-link:hover {
+  text-decoration: underline;
+}
+
 /* ── Responsive ── */
 @media (max-width: 700px) {
   .staff-header {

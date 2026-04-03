@@ -2,10 +2,10 @@ import { useState } from 'react'
 import './Staff.css'
 import STAFF, { UNI_META } from '../data/staff.js'
 
-function StaffCard({ s }) {
+function StaffCard({ s, onClick }) {
   const isNurse = s.role === 'พยาบาล'
   return (
-    <article className={`sc sc--${s.uni.toLowerCase()}`}>
+    <article className={`sc sc--${s.uni.toLowerCase()}`} onClick={() => onClick(s)} style={{ cursor: 'pointer' }}>
       <div className="sc-top">
         <span className="sc-nick" lang="th">{s.nickname}</span>
         <div className="sc-badges">
@@ -14,12 +14,69 @@ function StaffCard({ s }) {
         </div>
       </div>
       <p className="sc-name" lang="th">{s.fullName}</p>
-      <a className="sc-phone" href={`tel:${s.phone}`}>{s.phone}</a>
+      <a className="sc-phone" href={`tel:${s.phone}`} onClick={(e) => e.stopPropagation()}>{s.phone}</a>
     </article>
   )
 }
 
-function Section({ label, sublabel, items }) {
+function StaffModal({ staff, onClose }) {
+  if (!staff) return null
+  const isNurse = staff.role === 'พยาบาล'
+  
+  return (
+    <div className="staff-modal-overlay" onClick={onClose}>
+      <div className="staff-modal" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose} aria-label="ปิด">×</button>
+        
+        <div className="modal-header">
+          <div className={`modal-avatar modal-avatar--${staff.uni.toLowerCase()}`}>
+            {staff.nickname.charAt(0)}
+          </div>
+          <h2 className="modal-name" lang="th">{staff.fullName}</h2>
+          <p className="modal-nick" lang="th">{staff.nickname}</p>
+          <div className="modal-badges">
+            {isNurse && <span className="sc-nurse-badge" lang="th">พยาบาล</span>}
+            <span className={`modal-uni ${staff.uni.toLowerCase()}`}>
+              {UNI_META[staff.uni].label} ({staff.uni})
+            </span>
+          </div>
+        </div>
+
+        <div className="modal-details">
+          <div className="modal-detail-item">
+            <span className="detail-label" lang="th">บทบาท</span>
+            <span className="detail-value" lang="th">{staff.role === '-' ? '-' : staff.role}</span>
+          </div>
+          
+          <div className="modal-detail-item">
+            <span className="detail-label" lang="th">เบอร์โทรศัพท์</span>
+            <a className="detail-value detail-link" href={`tel:${staff.phone}`}>
+              {staff.phone}
+            </a>
+          </div>
+
+          {staff.group && (
+            <div className="modal-detail-item">
+              <span className="detail-label" lang="th">กลุ่มที่ดูแล</span>
+              <span className="detail-value" lang="th">กลุ่มที่ {staff.group}</span>
+            </div>
+          )}
+
+          {!staff.group && (
+            <div className="modal-detail-item">
+              <span className="detail-label" lang="th">กลุ่มที่ดูแล</span>
+              <span className="detail-value" lang="th">ไม่ได้อยู่ในกลุ่ม</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function Section(props) {
+  const { label, sublabel, items, onStaffClick } = props
+  
   return (
     <section className="st-section">
       <div className="st-section-header">
@@ -28,14 +85,15 @@ function Section({ label, sublabel, items }) {
         <span className="st-section-count">{items.length}</span>
       </div>
       <div className="st-grid">
-        {items.map(s => <StaffCard key={s.id} s={s} />)}
+        {items.map(s => <StaffCard key={s.id} s={s} onClick={onStaffClick} />)}
       </div>
     </section>
   )
 }
 
 export default function Staff() {
-  const [sort, setSort] = useState('uni') // 'uni' | 'group'
+  const [sort, setSort] = useState('uni')
+  const [selectedStaff, setSelectedStaff] = useState(null)
 
   const sections = sort === 'uni'
     ? ['MU', 'CU', 'TU'].map(uni => ({
@@ -78,9 +136,19 @@ export default function Staff() {
 
       <main className="staff-body">
         {sections.map(sec => (
-          <Section key={sec.key} label={sec.label} sublabel={sec.sublabel} items={sec.items} />
+          <Section 
+            key={sec.key} 
+            label={sec.label} 
+            sublabel={sec.sublabel} 
+            items={sec.items} 
+            onStaffClick={setSelectedStaff}
+          />
         ))}
       </main>
+
+      {selectedStaff && (
+        <StaffModal staff={selectedStaff} onClose={() => setSelectedStaff(null)} />
+      )}
     </div>
   )
 }
