@@ -13,11 +13,15 @@ export default function Buddy() {
   const [buddyRevealed, setBuddyRevealed] = useState(false)
 
   useEffect(() => {
-    const saved = localStorage.getItem('buddy-revealed')
-    if (saved === 'true') {
-      setBuddyRevealed(true)
+    if (result?.me?.nickname) {
+      const saved = localStorage.getItem('buddy-revealed-' + result.me.nickname)
+      if (saved === 'true') {
+        setBuddyRevealed(true)
+      } else {
+        setBuddyRevealed(false)
+      }
     }
-  }, [])
+  }, [result?.me?.nickname])
 
   function handleSearch(e) {
     e.preventDefault()
@@ -63,7 +67,9 @@ export default function Buddy() {
 
   function revealBuddy() {
     setBuddyRevealed(true)
-    localStorage.setItem('buddy-revealed', 'true')
+    if (result?.me?.nickname) {
+      localStorage.setItem('buddy-revealed-' + result.me.nickname, 'true')
+    }
   }
 
   return (
@@ -126,9 +132,14 @@ export default function Buddy() {
               <span className="card-role" lang="th">คุณ</span>
               <div className="card-avatar">{result.me.nickname.charAt(0)}</div>
               <span className="card-nick" lang="th">{result.me.nickname}</span>
-              <span className="card-group" lang="th">
-                {result.me.group ? `กลุ่มที่ ${result.me.group}` : result.me.uni}
-              </span>
+              <div className="card-meta">
+                {result.me.group && (
+                  <span className="card-group" lang="th">กลุ่มที่ {result.me.group}</span>
+                )}
+                {result.me.uni && (
+                  <span className="card-uni">{result.me.uni}</span>
+                )}
+              </div>
             </div>
 
             <div className="result-connector" aria-hidden="true">
@@ -142,20 +153,37 @@ export default function Buddy() {
               className={`result-card buddy-card ${buddyRevealed ? 'revealed' : 'hidden'}`}
               onClick={!buddyRevealed ? revealBuddy : undefined}
             >
-              <span className="card-role" lang="th">
-                {buddyRevealed ? 'บัดดี้' : '??'}
-              </span>
-              <div className="card-avatar buddy-avatar">
-                {buddyRevealed ? result.buddy?.nickname.charAt(0) : '?'}
-              </div>
-              <span className="card-nick" lang="th">
-                {buddyRevealed ? result.buddy?.nickname : 'คลิกเพื่อเปิดเผย'}
-              </span>
-              <span className="card-group" lang="th">
-                {buddyRevealed ? (
-                  result.buddy?.group ? `กลุ่มที่ ${result.buddy.group}` : result.buddy?.uni
-                ) : '?'}
-              </span>
+              {!buddyRevealed ? (
+                <div className="envelope-wrap">
+                  <div className="envelope">
+                    <div className="envelope-flap" />
+                    <div className="envelope-body">
+                      <svg className="envelope-icon" viewBox="0 0 48 48" fill="none">
+                        <path d="M24 28l12-8v20H12V20l12 8z" fill="currentColor"/>
+                        <path d="M4 10l20 16 20-16v-4H4v4z" fill="currentColor"/>
+                        <path d="M4 10v32h40V10l-20 16L4 10z" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+                      </svg>
+                      <span className="envelope-text" lang="th">คลิกเพื่อเปิดจดหมาย</span>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <span className="card-role" lang="th">บัดดี้</span>
+                  <div className="card-avatar buddy-avatar">
+                    {result.buddy?.nickname.charAt(0)}
+                  </div>
+                  <span className="card-nick" lang="th">{result.buddy?.nickname}</span>
+                  <div className="card-meta">
+                    {result.buddy?.group && (
+                      <span className="card-group" lang="th">กลุ่มที่ {result.buddy.group}</span>
+                    )}
+                    {result.buddy?.uni && (
+                      <span className="card-uni">{result.buddy.uni}</span>
+                    )}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         )}

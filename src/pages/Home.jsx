@@ -146,6 +146,41 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="explore" aria-label="Explore pages">
+        <div className="explore-inner">
+          <header className="dest-header">
+            <span className="dest-eyebrow" lang="th">สำรวจ</span>
+            <span className="dest-eyebrow-en">Explore</span>
+          </header>
+
+          <div className="explore-grid">
+            <NavLink to="/schedule" className="explore-card explore-card--cu">
+              <span className="explore-num">01</span>
+              <h2 className="explore-thai" lang="th">กำหนดการ</h2>
+              <p className="explore-en">Schedule</p>
+              <p className="explore-desc" lang="th">ตารางกิจกรรมตลอดทริป 4–6 เมษายน</p>
+              <span className="explore-arrow" aria-hidden="true">→</span>
+            </NavLink>
+
+            <NavLink to="/groups" className="explore-card explore-card--tu">
+              <span className="explore-num">02</span>
+              <h2 className="explore-thai" lang="th">กลุ่ม</h2>
+              <p className="explore-en">Groups</p>
+              <p className="explore-desc" lang="th">รายชื่อกลุ่มและสมาชิกทั้งหมด</p>
+              <span className="explore-arrow" aria-hidden="true">→</span>
+            </NavLink>
+
+            <NavLink to="/buddy" className="explore-card explore-card--mu">
+              <span className="explore-num">03</span>
+              <h2 className="explore-thai" lang="th">บัดดี้</h2>
+              <p className="explore-en">Buddy</p>
+              <p className="explore-desc" lang="th">จับคู่บัดดี้ข้ามมหาวิทยาลัย</p>
+              <span className="explore-arrow" aria-hidden="true">→</span>
+            </NavLink>
+          </div>
+        </div>
+      </section>
+
        <footer className="site-footer">
         <span lang="th">Photo สัมพันธ์</span>
         <span className="footer-dot" aria-hidden="true">·</span>

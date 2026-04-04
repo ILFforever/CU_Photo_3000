@@ -73,7 +73,7 @@ const navItems = [
 export default function Sidebar() {
   const [open, setOpen] = useState(false)
   const [collapsed, setCollapsed] = useState(
-    () => localStorage.getItem('sidebar-collapsed') === 'true'
+    () => localStorage.getItem('sidebar-collapsed') !== 'false'
   )
   const location = useLocation()
 

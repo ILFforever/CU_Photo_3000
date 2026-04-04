@@ -136,6 +136,7 @@ main {
   letter-spacing: -0.025em;
   line-height: 0.92;
   margin-left: -0.04em; /* optical alignment */
+  padding-right: 0.20em;
 }
 
 .name-th {
@@ -379,6 +380,120 @@ main {
 }
  
 /* ─────────────────────────────────────
+   Explore — page navigation cards
+───────────────────────────────────── */
+.explore {
+  background: var(--bg);
+  padding: var(--sp-24) var(--sp-16) var(--sp-24);
+}
+
+.explore-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+}
+
+.explore-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-8) var(--sp-6);
+  border: 1px solid var(--teal-border);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: background 200ms, border-color 200ms;
+  overflow: hidden;
+}
+
+.explore-card--cu { border-top: 2px solid var(--cu); }
+.explore-card--tu { border-top: 2px solid var(--tu); }
+.explore-card--mu { border-top: 2px solid var(--mu); }
+
+.explore-card--cu .explore-num { color: var(--cu); }
+.explore-card--tu .explore-num { color: var(--tu); }
+.explore-card--mu .explore-num { color: var(--mu); }
+
+.explore-card:hover {
+  background: oklch(66% 0.09 185 / 0.05);
+  border-color: var(--teal-border);
+}
+
+.explore-card--cu:hover { background: oklch(52% 0.19 12 / 0.06); border-top-color: var(--cu); }
+.explore-card--tu:hover { background: oklch(58% 0.21 30 / 0.06); border-top-color: var(--tu); }
+.explore-card--mu:hover { background: oklch(44% 0.15 265 / 0.06); border-top-color: var(--mu); }
+
+.explore-card--cu:hover .explore-arrow { color: var(--cu); }
+.explore-card--tu:hover .explore-arrow { color: var(--tu); }
+.explore-card--mu:hover .explore-arrow { color: var(--mu); }
+
+.explore-card:hover .explore-arrow {
+  transform: translateX(4px);
+}
+
+.explore-num {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--teal-dim);
+  letter-spacing: 0.12em;
+  font-family: var(--font-body);
+}
+
+.explore-thai {
+  font-family: var(--font-thai);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 900;
+  color: var(--text-heading);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.explore-en {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.explore-desc {
+  font-family: var(--font-thai);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  margin: var(--sp-2) 0 0;
+  flex: 1;
+}
+
+.explore-arrow {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-top: var(--sp-4);
+  display: block;
+  transition: transform 200ms var(--ease-out-quart), color 200ms;
+}
+
+@media (max-width: 680px) {
+  .explore {
+    padding: var(--sp-16) var(--sp-6);
+  }
+
+  .explore-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+}
+
+/* ─────────────────────────────────────
    Footer
 ──────────────────────────────────── */
 .site-footer {
@@ -478,6 +593,40 @@ main {
   .polaroid { transition: none; }
   .dest-entry { opacity: 1; transform: none; transition: none; }
   .dest-img { transition: none; }
+}
+
+/* ── Collapsed sidebar: reclaim space in hero (desktop only) ── */
+@media (min-width: 769px) {
+  .layout:has(.sidebar-collapsed) .hero {
+    grid-template-columns: 1fr 420px;
+    padding-top: var(--sp-12);
+    padding-left: var(--sp-16);
+    gap: var(--sp-6);
+    justify-items: start;
+  }
+
+  .layout:has(.sidebar-collapsed) .hero-content {
+    order: 1;
+  }
+
+  .layout:has(.sidebar-collapsed) .polaroid-stack {
+    order: 2;
+    height: 420px;
+    justify-self: start;
+    margin-left: -75px;
+  }
+
+  .layout:has(.sidebar-collapsed) .polaroid {
+    width: 220px;
+  }
+
+  .layout:has(.sidebar-collapsed) .polaroid-stack:hover .polaroid-0 {
+    transform: rotate(-18deg) translate(-160px, 20px);
+  }
+
+  .layout:has(.sidebar-collapsed) .polaroid-stack:hover .polaroid-2 {
+    transform: rotate(18deg) translate(160px, 20px);
+  }
 }
 
 /* ─────────────────────────────────────
