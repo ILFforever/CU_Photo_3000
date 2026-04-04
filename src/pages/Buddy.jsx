@@ -175,9 +175,9 @@ export default function Buddy() {
                 </button>
               ))}
             </div>
-          </div>
-        )}
-      </div>
+           </div>
+         )}
+       </div>
     </div>
-  )
+   )
 }

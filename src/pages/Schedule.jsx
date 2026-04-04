@@ -153,8 +153,8 @@ export default function Schedule() {
               </li>
             )
           })}
-        </ol>
-      </div>
+         </ol>
+       </div>
     </div>
-  )
+   )
 }

@@ -29,3 +29,54 @@
     margin-left: 0;
   }
 }
+
+/* ── Page Navigation Buttons ── */
+.page-nav {
+  display: flex;
+  gap: var(--sp-3);
+  padding: var(--sp-8) var(--sp-12);
+  border-top: 1px solid var(--teal-border);
+  background: var(--surface-1);
+  flex-wrap: wrap;
+}
+
+.page-nav-btn {
+  font-family: var(--font-thai);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.4;
+  color: var(--text-body);
+  background: var(--bg);
+  border: 1px solid var(--teal-border);
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 200ms;
+  flex: 1;
+  min-width: fit-content;
+  text-align: center;
+}
+
+.page-nav-btn:hover {
+  background: var(--teal);
+  color: var(--bg);
+  border-color: var(--teal);
+  transform: translateY(-1px);
+}
+
+.page-nav-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .page-nav {
+    padding: var(--sp-6) var(--sp-4);
+    gap: var(--sp-2);
+  }
+
+  .page-nav-btn {
+    font-size: 0.78rem;
+    padding: var(--sp-2) var(--sp-3);
+  }
+}

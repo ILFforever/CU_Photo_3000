@@ -68,20 +68,14 @@ const navItems = [
     ),
   },
 
-]
-
-function hasLiveActivity() {
-  const todayISO = new Date().toISOString().slice(0, 10)
-  return ['2026-04-04', '2026-04-05', '2026-04-06'].includes(todayISO)
-}
-
+  ]
+ 
 export default function Sidebar() {
   const [open, setOpen] = useState(false)
   const [collapsed, setCollapsed] = useState(
     () => localStorage.getItem('sidebar-collapsed') === 'true'
   )
   const location = useLocation()
-  const isLive = hasLiveActivity()
 
   useEffect(() => { setOpen(false) }, [location.pathname])
 
@@ -154,15 +148,12 @@ export default function Sidebar() {
                 }
                 title={collapsed ? item.label : undefined}
               >
-                <span className="sidebar-icon">{item.icon}</span>
-                <span className="sidebar-label">
-                  <span className="label-th" lang="th">{item.label}</span>
-                  <span className="label-en">{item.labelEn}</span>
-                </span>
-                {item.to === '/schedule' && isLive && (
-                  <span className="sidebar-live-dot" aria-label="live" />
-                )}
-              </NavLink>
+                 <span className="sidebar-icon">{item.icon}</span>
+                 <span className="sidebar-label">
+                   <span className="label-th" lang="th">{item.label}</span>
+                   <span className="label-en">{item.labelEn}</span>
+                 </span>
+               </NavLink>
             </li>
           ))}
         </ul>

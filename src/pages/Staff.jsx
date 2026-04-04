@@ -150,5 +150,5 @@ export default function Staff() {
         <StaffModal staff={selectedStaff} onClose={() => setSelectedStaff(null)} />
       )}
     </div>
-  )
+   )
 }
