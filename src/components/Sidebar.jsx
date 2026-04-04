@@ -54,20 +54,6 @@ const navItems = [
       </svg>
     ),
   },
-  {
-    to: '/buddy',
-    end: false,
-    label: 'บัดดี้',
-    labelEn: 'Buddy',
-    icon: (
-      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="8" cy="6" r="3" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M2 17c0-3.314 2.686-5 6-5s6 1.686 6 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="M14 10l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-
   ]
  
 export default function Sidebar() {

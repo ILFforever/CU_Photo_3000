@@ -3,7 +3,6 @@ import Sidebar from './components/Sidebar'
 import Home from './pages/Home'
 import Schedule from './pages/Schedule'
 import Groups from './pages/Groups'
-import Buddy from './pages/Buddy'
 import Staff from './pages/Staff'
 import './App.css'
 
@@ -17,7 +16,6 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/groups" element={<Groups />} />
-            <Route path="/buddy" element={<Buddy />} />
             <Route path="/staff" element={<Staff />} />
           </Routes>
         </main>

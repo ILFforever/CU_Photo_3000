@@ -169,14 +169,6 @@ export default function Home() {
               <p className="explore-desc" lang="th">รายชื่อกลุ่มและสมาชิกทั้งหมด</p>
               <span className="explore-arrow" aria-hidden="true">→</span>
             </NavLink>
-
-            <NavLink to="/buddy" className="explore-card explore-card--mu">
-              <span className="explore-num">03</span>
-              <h2 className="explore-thai" lang="th">บัดดี้</h2>
-              <p className="explore-en">Buddy</p>
-              <p className="explore-desc" lang="th">จับคู่บัดดี้ข้ามมหาวิทยาลัย</p>
-              <span className="explore-arrow" aria-hidden="true">→</span>
-            </NavLink>
           </div>
         </div>
       </section>
