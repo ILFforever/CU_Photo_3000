@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { NavLink } from 'react-router-dom'
 import './Home.css'
 
 const polaroids = [
@@ -145,7 +146,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="site-footer">
+       <footer className="site-footer">
         <span lang="th">Photo สัมพันธ์</span>
         <span className="footer-dot" aria-hidden="true">·</span>
         <span>CU × TU × MU</span>
