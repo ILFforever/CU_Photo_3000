@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  getEvents, createEvent, updateEvent, syncPhotos,
+  getEvents, createEvent, updateEvent, syncPhotos, deleteEvent,
   getAdmins, createAdmin, deleteAdmin,
 } from '../../api/client';
 import PARTICIPANTS from '../../data/participants';
@@ -56,6 +56,14 @@ export default function AdminDashboard() {
       await loadData();
     } catch (err) { setError(err.message); }
     finally { setCreating(false); }
+  }
+
+  async function handleDeleteEvent(eventId, eventName) {
+    if (!confirm(`Delete "${eventName}" and all its votes/photos? This cannot be undone.`)) return;
+    try {
+      await deleteEvent(token, eventId);
+      await loadData();
+    } catch (err) { setError(err.message); }
   }
 
   async function handleToggleOpen(event) {
@@ -160,6 +168,12 @@ export default function AdminDashboard() {
                     onClick={() => navigate(`/admin/results/${ev.id}`)}
                   >
                     Results
+                  </button>
+                  <button
+                    className="admin-btn admin-btn-sm admin-btn-danger"
+                    onClick={() => handleDeleteEvent(ev.id, ev.name)}
+                  >
+                    Delete
                   </button>
                 </div>
               </div>

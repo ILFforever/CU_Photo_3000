@@ -48,6 +48,9 @@ export const createEvent = (token, payload) =>
 export const updateEvent = (token, eventId, payload) =>
   request(`/admin/events/${eventId}`, { method: 'PATCH', body: JSON.stringify(payload), headers: authHeaders(token) });
 
+export const deleteEvent = (token, eventId) =>
+  request(`/admin/events/${eventId}`, { method: 'DELETE', headers: authHeaders(token) });
+
 export const syncPhotos = (token, eventId, sheetUrl) =>
   request(`/admin/events/${eventId}/sync-photos`, { method: 'POST', body: JSON.stringify({ sheetUrl }), headers: authHeaders(token) });
 
