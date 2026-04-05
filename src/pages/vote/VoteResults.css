@@ -1,0 +1,349 @@
+.vr-page {
+  min-height: 100vh;
+  padding: var(--sp-12) var(--sp-8) 120px;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+/* ── Header ── */
+.vr-header {
+  text-align: center;
+}
+
+.vr-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: var(--sp-2);
+}
+
+.vr-title {
+  font-family: var(--font-thai);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: var(--sp-2);
+}
+
+.vr-subtitle {
+  font-family: var(--font-thai);
+  font-size: 1rem;
+  color: var(--text-muted, oklch(60% 0.02 210));
+}
+
+.vr-loading,
+.vr-error {
+  font-family: var(--font-thai);
+  color: var(--text-muted, oklch(60% 0.02 210));
+  padding: var(--sp-8);
+}
+
+/* ── Rank sections ── */
+.vr-sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  width: 100%;
+}
+
+.vr-rank-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+/* Hidden state */
+.vr-hidden {
+  display: none;
+}
+
+/* Revealed state — dramatic entrance */
+.vr-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: vr-grand-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes vr-grand-reveal {
+  0%   { opacity: 0; transform: translateY(60px) scale(0.93); }
+  60%  { opacity: 1; transform: translateY(-8px) scale(1.02); }
+  80%  { transform: translateY(4px) scale(0.99); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Gold gets an extra glow pulse on reveal */
+.rank-gold.vr-revealed {
+  animation: vr-grand-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+             vr-gold-glow 1.4s 0.9s ease-out forwards;
+}
+
+@keyframes vr-gold-glow {
+  0%   { filter: drop-shadow(0 0 0px oklch(82% 0.17 85 / 0)); }
+  40%  { filter: drop-shadow(0 0 40px oklch(82% 0.17 85 / 0.7)); }
+  100% { filter: drop-shadow(0 0 12px oklch(82% 0.17 85 / 0.25)); }
+}
+
+/* ── Rank heading ── */
+.vr-rank-heading {
+  font-family: var(--font-thai);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: var(--sp-1) var(--sp-6);
+  border-radius: 999px;
+  border: 1.5px solid currentColor;
+}
+
+.rank-gold .vr-rank-heading {
+  color: oklch(82% 0.17 85);
+  border-color: oklch(82% 0.17 85 / 0.6);
+  background: oklch(82% 0.17 85 / 0.08);
+  box-shadow: 0 0 24px oklch(82% 0.17 85 / 0.25);
+}
+
+.rank-silver .vr-rank-heading {
+  color: oklch(78% 0.04 220);
+  border-color: oklch(78% 0.04 220 / 0.5);
+  background: oklch(78% 0.04 220 / 0.07);
+}
+
+.rank-bronze .vr-rank-heading {
+  color: oklch(70% 0.12 55);
+  border-color: oklch(70% 0.12 55 / 0.5);
+  background: oklch(70% 0.12 55 / 0.07);
+}
+
+/* ── Cards row (for ties) ── */
+.vr-cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-6);
+  justify-content: center;
+  width: 100%;
+}
+
+/* ── Individual card ── */
+.vr-card {
+  background: var(--surface-1);
+  border-radius: 16px;
+  overflow: hidden;
+  flex: 1 1 280px;
+  max-width: 480px;
+  border: 1px solid var(--teal-border);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Gold glow */
+.rank-gold .vr-card {
+  border-color: oklch(82% 0.17 85 / 0.4);
+  box-shadow: 0 0 32px oklch(82% 0.17 85 / 0.18);
+}
+
+/* ── Image ── */
+.vr-img-wrap {
+  width: 100%;
+  position: relative;
+}
+
+.vr-img-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.vr-img-shimmer {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: linear-gradient(90deg, var(--surface-1) 25%, var(--surface-2) 50%, var(--surface-1) 75%);
+  background-size: 200% 100%;
+  animation: vr-shimmer 1.4s infinite;
+}
+
+@keyframes vr-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.vr-img-failed {
+  width: 100%;
+  padding: var(--sp-8);
+  text-align: center;
+  font-family: var(--font-thai);
+  color: var(--text-muted, oklch(60% 0.02 210));
+  font-size: 0.85rem;
+}
+
+/* ── Info ── */
+.vr-info {
+  padding: var(--sp-4) var(--sp-6) var(--sp-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.vr-photo-title {
+  font-family: var(--font-thai);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.vr-submitted-by {
+  font-family: var(--font-thai);
+  font-size: 0.88rem;
+  color: var(--text-muted, oklch(60% 0.02 210));
+}
+
+.vr-votes {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--teal);
+  font-weight: 600;
+  margin-top: var(--sp-1);
+}
+
+/* ── Lightbox ── */
+.vr-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: oklch(5% 0.02 215 / 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-8);
+  animation: vr-fade-in 0.2s ease forwards;
+}
+
+.vr-lightbox img {
+  max-width: 100%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.vr-lightbox-close {
+  position: fixed;
+  top: var(--sp-4);
+  right: var(--sp-6);
+  background: none;
+  border: none;
+  color: var(--text-heading);
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.vr-lightbox-close:hover { opacity: 1; }
+
+/* ── Countdown overlay ── */
+.vr-countdown-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: oklch(8% 0.04 215 / 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: vr-overlay-in 0.3s ease forwards;
+}
+
+@keyframes vr-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.vr-countdown-intro {
+  font-family: var(--font-thai);
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text-heading);
+  text-align: center;
+  padding: 0 var(--sp-8);
+  animation: vr-fade-in 0.4s ease forwards;
+}
+
+.vr-countdown-num {
+  font-family: var(--font-body);
+  font-size: clamp(5rem, 20vw, 10rem);
+  font-weight: 900;
+  color: var(--teal);
+  line-height: 1;
+  animation: vr-num-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes vr-num-pop {
+  0%   { opacity: 0; transform: scale(0.4); }
+  60%  { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ── Reveal button — sticky at bottom ── */
+.vr-reveal-wrap {
+  position: fixed;
+  bottom: var(--sp-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+}
+
+.vr-reveal-btn {
+  font-family: var(--font-thai);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: var(--sp-3) var(--sp-8);
+  border-radius: 999px;
+  border: 1.5px solid var(--teal);
+  background: var(--teal);
+  color: var(--bg);
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.vr-reveal-btn:hover {
+  opacity: 0.88;
+  transform: scale(1.03);
+}
+
+.vr-reveal-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Congrats ── */
+.vr-congrats {
+  font-family: var(--font-thai);
+  font-size: 1.15rem;
+  color: var(--text-heading);
+  text-align: center;
+  animation: vr-fade-in 0.8s ease forwards;
+}
+
+@keyframes vr-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+  .vr-page {
+    padding: var(--sp-8) var(--sp-4) var(--sp-12);
+  }
+
+  .vr-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}

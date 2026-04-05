@@ -188,6 +188,25 @@ export default function AdminDashboard() {
                 </div>
 
                 <div className="admin-event-row">
+                  <span className="admin-label">Results Page</span>
+                  <div className="admin-sync-row">
+                    <code className="admin-code admin-code-url">{window.location.origin}/results/{ev.id}</code>
+                    <button
+                      className="admin-btn admin-btn-xs admin-btn-ghost"
+                      onClick={() => { window.open(`/results/${ev.id}`, '_blank'); }}
+                    >
+                      Open
+                    </button>
+                    <button
+                      className="admin-btn admin-btn-xs admin-btn-ghost"
+                      onClick={() => navigator.clipboard.writeText(`${window.location.origin}/results/${ev.id}`)}
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+
+                <div className="admin-event-row">
                   <span className="admin-label">Sync Photos</span>
                   <div className="admin-sync-row">
                     <input

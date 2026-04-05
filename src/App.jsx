@@ -9,6 +9,7 @@ import VoteEntry from './pages/vote/VoteEntry'
 import VoteConfirm from './pages/vote/VoteConfirm'
 import VoteGallery from './pages/vote/VoteGallery'
 import VoteDone from './pages/vote/VoteDone'
+import VoteResults from './pages/vote/VoteResults'
 import AdminLogin from './pages/admin/AdminLogin'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminResults from './pages/admin/AdminResults'
@@ -41,6 +42,9 @@ export default function App() {
           <Route path="/vote/confirm" element={<MainLayout><VoteConfirm /></MainLayout>} />
           <Route path="/vote/gallery" element={<MainLayout><VoteGallery /></MainLayout>} />
           <Route path="/vote/done" element={<MainLayout><VoteDone /></MainLayout>} />
+
+          {/* Public results — fullscreen, no sidebar */}
+          <Route path="/results/:eventId" element={<VoteResults />} />
 
           {/* Admin — fullscreen, no sidebar */}
           <Route path="/admin" element={<AdminLogin />} />

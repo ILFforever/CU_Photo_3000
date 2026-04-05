@@ -255,6 +255,15 @@
   letter-spacing: 0.1em;
 }
 
+.admin-code-url {
+  letter-spacing: 0;
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 320px;
+}
+
 .admin-empty {
   color: var(--text-muted);
   font-size: 0.9rem;
