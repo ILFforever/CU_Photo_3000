@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "online": "vite --mode online",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

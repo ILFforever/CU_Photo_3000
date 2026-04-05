@@ -1,0 +1,101 @@
+.vw {
+  padding: var(--sp-12) var(--sp-8);
+}
+
+.vw-inner {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.vw-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.vw-x {
+  color: var(--text-muted);
+  opacity: 0.4;
+  font-weight: 300;
+}
+
+.vw-title {
+  font-family: var(--font-thai);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--text-heading);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.vw-desc {
+  font-family: var(--font-thai);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-weight: 300;
+  border-left: 2px solid var(--teal-border);
+  padding-left: var(--sp-4);
+}
+
+.vw-rules {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-4) 0;
+  border-top: 1px solid var(--teal-border);
+  border-bottom: 1px solid var(--teal-border);
+}
+
+.vw-rule {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-4);
+}
+
+.vw-rule-num {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--teal);
+  flex-shrink: 0;
+  width: 20px;
+}
+
+.vw-rule-text {
+  font-family: var(--font-thai);
+  font-size: 0.9rem;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+.vw-btn {
+  display: inline-flex;
+  align-self: flex-start;
+  background: var(--teal);
+  color: var(--bg);
+  font-family: var(--font-thai);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: var(--sp-3) var(--sp-8);
+  border-radius: 10px;
+  transition: opacity 150ms, transform 150ms;
+}
+
+.vw-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.vw-btn:active { transform: translateY(0); }
+
+@media (max-width: 768px) {
+  .vw { padding: var(--sp-8) var(--sp-4); }
+  .vw-btn { align-self: stretch; text-align: center; justify-content: center; }
+}
