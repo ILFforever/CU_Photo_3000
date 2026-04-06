@@ -57,6 +57,20 @@ export default function VoteEntry() {
 
         <form className="vote-form" onSubmit={handleSubmit}>
           <div className="vote-field">
+            <label htmlFor="votingCode">รหัสอีเว้นท์</label>
+            <input
+              id="votingCode"
+              name="votingCode"
+              type="text"
+              placeholder="รหัสที่ได้รับจากสตาฟ"
+              value={form.votingCode}
+              onChange={handleChange}
+              required
+              autoComplete="off"
+            />
+          </div>
+
+          <div className="vote-field">
             <label htmlFor="nickname">ชื่อเล่น</label>
             <select
               id="nickname"
@@ -86,20 +100,6 @@ export default function VoteEntry() {
               onChange={handleChange}
               required
               autoComplete="tel"
-            />
-          </div>
-
-          <div className="vote-field">
-            <label htmlFor="votingCode">รหัสโหวต</label>
-            <input
-              id="votingCode"
-              name="votingCode"
-              type="text"
-              placeholder="รหัสที่ได้รับจากสตาฟ"
-              value={form.votingCode}
-              onChange={handleChange}
-              required
-              autoComplete="off"
             />
           </div>
 
