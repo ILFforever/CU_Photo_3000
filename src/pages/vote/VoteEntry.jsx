@@ -11,7 +11,7 @@ export default function VoteEntry() {
   const navigate = useNavigate();
   const { startSession } = useVote();
 
-  const [form, setForm] = useState({ eventId: '', nickname: '', phone: '', votingCode: '' });
+  const [form, setForm] = useState({ nickname: '', phone: '', votingCode: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -25,9 +25,9 @@ export default function VoteEntry() {
     setLoading(true);
     setError('');
     try {
-      const data = await verifyVoter(form.eventId.trim(), form.phone, form.nickname);
+      const data = await verifyVoter(form.phone, form.nickname, form.votingCode);
       startSession({
-        eventId: form.eventId.trim(),
+        eventId: data.eventId,
         phone: form.phone,
         fullName: data.fullName,
         nickname: data.nickname,
@@ -56,20 +56,6 @@ export default function VoteEntry() {
         </div>
 
         <form className="vote-form" onSubmit={handleSubmit}>
-          <div className="vote-field">
-            <label htmlFor="eventId">Event ID</label>
-            <input
-              id="eventId"
-              name="eventId"
-              type="text"
-              placeholder="กรอก Event ID จากสตาฟ"
-              value={form.eventId}
-              onChange={handleChange}
-              required
-              autoComplete="off"
-            />
-          </div>
-
           <div className="vote-field">
             <label htmlFor="nickname">ชื่อเล่น</label>
             <select

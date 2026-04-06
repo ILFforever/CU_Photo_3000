@@ -15,10 +15,10 @@ async function request(path, options = {}) {
 
 export const getActiveEvent = () => request('/events/active');
 
-export const verifyVoter = (eventId, phone, fullName) =>
-  request(`/events/${eventId}/verify`, {
+export const verifyVoter = (phone, fullName, votingCode) =>
+  request('/events/verify', {
     method: 'POST',
-    body: JSON.stringify({ phone, fullName }),
+    body: JSON.stringify({ phone, fullName, votingCode }),
   });
 
 export const getPhotos = (eventId) =>
