@@ -16,12 +16,27 @@ import AdminResults from './pages/admin/AdminResults'
 import { VoteProvider } from './context/VoteContext'
 import './App.css'
 
+function TopBanner() {
+  return (
+    <div className="top-banner" role="banner">
+      <span className="top-banner-dot" aria-hidden="true">✦</span>
+      <span lang="th">ค่ายสิ้นสุดแล้ว — ขอบคุณทุกคนที่มาร่วมสร้างความทรงจำ</span>
+      <span className="top-banner-sep" aria-hidden="true">·</span>
+      <span>See you next year.</span>
+      <span className="top-banner-dot" aria-hidden="true">✦</span>
+    </div>
+  )
+}
+
 function MainLayout({ children }) {
   return (
-    <div className="layout">
-      <Sidebar />
-      <main className="main-content">{children}</main>
-    </div>
+    <>
+      <TopBanner />
+      <div className="layout">
+        <Sidebar />
+        <main className="main-content">{children}</main>
+      </div>
+    </>
   )
 }
 

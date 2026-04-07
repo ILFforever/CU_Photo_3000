@@ -8,6 +8,60 @@ const polaroids = [
   { src: '/images/hero/tree.jpg', alt: 'ธรรมชาติ', label: 'Kodak Film' },
 ]
 
+const collagePhotos = [
+  '/images/collage/DSCF0002.JPG','/images/collage/DSCF0008.JPG','/images/collage/DSCF0012.JPG',
+  '/images/collage/DSCF0017.JPG','/images/collage/DSCF0019.JPG','/images/collage/DSCF0020.JPG',
+  '/images/collage/DSCF0023.JPG','/images/collage/DSCF0025.JPG','/images/collage/DSCF0028.JPG',
+  '/images/collage/DSCF0030.JPG','/images/collage/DSCF0032.JPG','/images/collage/DSCF0037.JPG',
+  '/images/collage/DSCF0038.JPG','/images/collage/DSCF0041.JPG','/images/collage/DSCF0046.JPG',
+  '/images/collage/DSCF0052.JPG','/images/collage/DSCF0053.JPG','/images/collage/DSCF0054.JPG',
+  '/images/collage/DSCF0060.JPG','/images/collage/DSCF0063.JPG','/images/collage/DSCF0065.JPG',
+  '/images/collage/DSCF0066.JPG','/images/collage/DSCF0069.JPG','/images/collage/DSCF0070.JPG',
+  '/images/collage/DSCF0080.JPG','/images/collage/DSCF0082.JPG','/images/collage/DSCF0087.JPG',
+  '/images/collage/DSCF0090.JPG','/images/collage/DSCF0095.JPG','/images/collage/DSCF0099.JPG',
+  '/images/collage/DSCF0103.JPG','/images/collage/DSCF0105.JPG','/images/collage/DSCF0111.JPG',
+  '/images/collage/DSCF0114.JPG','/images/collage/DSCF0118.JPG','/images/collage/DSCF0128.JPG',
+  '/images/collage/DSCF0129.JPG','/images/collage/DSCF0131.JPG','/images/collage/DSCF0132.JPG',
+  '/images/collage/DSCF0134.JPG','/images/collage/DSCF0141.JPG','/images/collage/DSCF0144.JPG',
+  '/images/collage/DSCF0150.JPG','/images/collage/DSCF0166.JPG','/images/collage/DSCF0170.JPG',
+  '/images/collage/DSCF0177.JPG','/images/collage/DSCF0182.JPG','/images/collage/DSCF0192.JPG',
+  '/images/collage/DSCF0198.JPG','/images/collage/DSCF0204.JPG','/images/collage/DSCF0216.JPG',
+  '/images/collage/DSCF0228.JPG','/images/collage/DSCF0231.JPG','/images/collage/DSCF0234.JPG',
+  '/images/collage/DSCF0246.JPG','/images/collage/DSCF0253.JPG','/images/collage/DSCF0262.JPG',
+  '/images/collage/DSCF0269.JPG','/images/collage/DSCF0271.JPG','/images/collage/DSCF0273.JPG',
+  '/images/collage/DSCF0275.JPG','/images/collage/DSCF0278.JPG','/images/collage/DSCF0279.JPG',
+  '/images/collage/DSCF0284.JPG','/images/collage/DSCF0288.JPG','/images/collage/DSCF0291.JPG',
+  '/images/collage/DSCF0293.JPG','/images/collage/DSCF0294.JPG','/images/collage/DSCF0295.JPG',
+  '/images/collage/DSCF0298.JPG','/images/collage/DSCF0303.JPG','/images/collage/DSCF0304.JPG',
+  '/images/collage/DSCF0307.JPG','/images/collage/DSCF0312.JPG','/images/collage/DSCF0319.JPG',
+  '/images/collage/DSCF0323.JPG','/images/collage/DSCF0324.JPG','/images/collage/DSCF0326.JPG',
+  '/images/collage/DSCF0331.JPG','/images/collage/DSCF0334.JPG','/images/collage/DSCF0342.JPG',
+  '/images/collage/DSCF0348.JPG','/images/collage/DSCF0351.JPG','/images/collage/DSCF0352.JPG',
+  '/images/collage/DSCF0353.JPG','/images/collage/DSCF0356.JPG','/images/collage/DSCF0360.JPG',
+  '/images/collage/DSCF0363.JPG','/images/collage/DSCF0364.JPG','/images/collage/DSCF0366.JPG',
+  '/images/collage/DSCF0368.JPG','/images/collage/DSCF0370.JPG','/images/collage/DSCF0373.JPG',
+  '/images/collage/DSCF0378.JPG','/images/collage/DSCF0387.JPG','/images/collage/DSCF0388.JPG',
+  '/images/collage/DSCF0391.JPG','/images/collage/DSCF0392.JPG','/images/collage/DSCF0394.JPG',
+  '/images/collage/DSCF0395.JPG','/images/collage/DSCF0402.JPG','/images/collage/DSCF0434.JPG',
+  '/images/collage/DSCF0445.JPG','/images/collage/DSCF0497.JPG','/images/collage/DSCF0505.JPG',
+  '/images/collage/DSCF0512.JPG','/images/collage/DSCF0514.JPG','/images/collage/DSCF0515.JPG',
+  '/images/collage/DSCF0521.JPG','/images/collage/DSCF6050.JPG','/images/collage/DSCF6052.JPG',
+  '/images/collage/DSCF6054.JPG','/images/collage/DSCF6057.JPG','/images/collage/DSCF6067.JPG',
+  '/images/collage/DSCF6075.JPG','/images/collage/DSCF6087.JPG','/images/collage/DSCF6096.JPG',
+  '/images/collage/DSCF6666.JPG','/images/collage/DSCF6667.JPG','/images/collage/DSCF6676.JPG',
+  '/images/collage/DSCF6694.JPG','/images/collage/DSCF6714.JPG','/images/collage/DSCF6739.JPG',
+  '/images/collage/DSCF6747.JPG','/images/collage/DSCF6790.JPG','/images/collage/DSCF6796.JPG',
+  '/images/collage/DSCF6803.JPG','/images/collage/DSCF6808.JPG','/images/collage/DSCF6814.JPG',
+  '/images/collage/DSCF6816.JPG','/images/collage/DSCF6827.JPG','/images/collage/DSCF6831.JPG',
+  '/images/collage/DSCF6835.JPG','/images/collage/DSCF6841.JPG','/images/collage/DSCF6845.JPG',
+  '/images/collage/DSCF6848.JPG','/images/collage/DSCF6860.JPG','/images/collage/DSCF6861.JPG',
+  '/images/collage/DSCF6865.JPG','/images/collage/DSCF6866.JPG','/images/collage/DSCF6872.JPG',
+  '/images/collage/DSCF9014.JPG','/images/collage/DSCF9043.JPG','/images/collage/DSCF9053.JPG',
+  '/images/collage/DSCF9060.JPG','/images/collage/DSCF9062.JPG','/images/collage/DSCF9067.JPG',
+  '/images/collage/DSCF9068.JPG','/images/collage/DSCF9079.JPG','/images/collage/DSCF9088.JPG',
+  '/images/collage/DSCF9101.JPG',
+]
+
 const destinations = [
   {
     num: '01',
@@ -114,6 +168,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Event Ended + Collage ─────────────────────────────────────── */}
+      <section className="ended-section" aria-label="Event ended">
+        <div className="ended-card">
+          <p className="ended-eyebrow">Photo สัมพันธ์ · 4–6 เมษายน 2569</p>
+          <h2 className="ended-title" lang="th">ค่ายสิ้นสุดแล้ว</h2>
+          <p className="ended-sub" lang="th">
+            ขอบคุณทุกคนที่มาร่วมสร้างความทรงจำสวยงามด้วยกัน<br />
+            แล้วพบกันใหม่ปีหน้า 🤍
+          </p>
+          <p className="ended-see-you">See you next year.</p>
+        </div>
+      </section>
+
+      <div className="collage-stage" aria-hidden="true">
+        {[0, 1, 2].map((row) => {
+          const chunk = Math.ceil(collagePhotos.length / 3)
+          const slice = collagePhotos.slice(row * chunk, (row + 1) * chunk)
+          const strip = [...slice, ...slice]
+          return (
+            <div key={row} className={`collage-row collage-row-${row}`}>
+              <div className={`collage-track ${row % 2 === 1 ? 'collage-track-rev' : ''}`}>
+                {strip.map((src, i) => (
+                  <div key={i} className="collage-cell">
+                    <img src={src} alt="" loading="lazy" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
       <div className="wave-sep" aria-hidden="true">
         <svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0,36 C160,58 320,14 480,36 C640,58 800,14 960,36 C1120,58 1280,14 1440,36 L1440,72 L0,72 Z" fill="var(--surface-1)"/>
@@ -169,6 +255,14 @@ export default function Home() {
               <p className="explore-desc" lang="th">รายชื่อกลุ่มและสมาชิกทั้งหมด</p>
               <span className="explore-arrow" aria-hidden="true">→</span>
             </NavLink>
+
+            <NavLink to="/vote" className="explore-card explore-card--mu">
+              <span className="explore-num">03</span>
+              <h2 className="explore-thai" lang="th">โหวต</h2>
+              <p className="explore-en">Vote</p>
+              <p className="explore-desc" lang="th">ร่วมโหวตภาพที่ชื่นชอบ</p>
+              <span className="explore-arrow" aria-hidden="true">→</span>
+            </NavLink>
           </div>
         </div>
       </section>
@@ -179,6 +273,15 @@ export default function Home() {
         <span>CU × TU × MU</span>
         <span className="footer-dot" aria-hidden="true">·</span>
         <span>4–6 เมษายน 2569</span>
+        <span className="footer-dot" aria-hidden="true">·</span>
+        <a
+          className="footer-dev"
+          href="https://github.com/ILFforever/CU_Photo_3000"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Built by ILFforever
+        </a>
       </footer>
     </div>
   )

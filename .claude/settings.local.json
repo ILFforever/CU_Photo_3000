@@ -9,7 +9,8 @@
       "mcp__claude_ai_Vercel__get_runtime_logs",
       "Read(//d/CU_Photo_BE/**)",
       "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(32\\).toString\\('hex'\\)\\)\")",
-      "Bash(python3 -c \"import json,sys; print\\(json.dumps\\(json.load\\(sys.stdin\\)\\)\\)\")"
+      "Bash(python3 -c \"import json,sys; print\\(json.dumps\\(json.load\\(sys.stdin\\)\\)\\)\")",
+      "Bash(npx vite:*)"
     ],
     "additionalDirectories": [
       "D:\\CU_Photo_BE"

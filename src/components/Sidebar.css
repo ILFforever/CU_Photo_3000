@@ -8,7 +8,7 @@
 .topbar {
   display: none;
   position: fixed;
-  top: 0;
+  top: 32px;
   left: 0;
   right: 0;
   height: 52px;
@@ -59,7 +59,7 @@
 /* ── Sidebar ── */
 .sidebar {
   position: fixed;
-  top: 0;
+  top: 32px;
   left: 0;
   bottom: 0;
   width: var(--sidebar-width);
